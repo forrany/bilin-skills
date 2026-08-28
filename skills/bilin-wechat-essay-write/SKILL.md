@@ -1,6 +1,9 @@
 ---
 name: bilin-wechat-essay-write
 description: 比邻留学公众号正文写作 skill。当顾问已经定好选题方向(来自 bilin-wechat-topic-brainstorm 或自己直接想清楚)、手里有 case 素材(逐字稿、骨架、PPT、顾问笔记、学生原话)、需要把素材写成符合比邻调性的高质量公众号文章时使用。请在用户说到"写公众号"、"写正文"、"开始写稿"、"出一篇"、"按这个方向写"、或在 bilin-wechat-topic-brainstorm 完成选题脑暴后要进入写稿阶段时主动触发。本 skill 不做选题脑暴(那是上游 skill 的事),也不给死模板——它给的是按 case 个性化的写作流程 + 比邻文风对齐 + 编撰风险标注。
+metadata:
+  org: bilin-admissions
+  version: "3.0"
 ---
 
 # 比邻公众号正文写作

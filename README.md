@@ -6,9 +6,15 @@
 
 | Skill | 用途 | 版本 |
 |-------|------|------|
-| `skills/bilin-admissions-consultant` | 美本申请顾问：案例评估、定校定专业、文书方向、推荐信策略 | 3.0 |
-| `skills/bilin-wechat-essay-write` | 公众号文章写作：hook 设计、风格模仿、成稿 | — |
-| `skills/bilin-wechat-topic-brainstorm` | 公众号选题发散：按维度拆解选题空间 | — |
+| `skills/bilin-admissions-consultant` | 美本申请顾问：方向设计、案例评估、定校定专业、文书方向 | 4.0 |
+| `skills/bilin-wechat-essay-write` | 公众号文章写作：hook 设计、风格模仿、成稿 | 3.0 |
+| `skills/bilin-wechat-topic-brainstorm` | 公众号选题发散：按维度拆解选题空间 | 1.0 |
+
+版本号写在各自 `SKILL.md` frontmatter 的 `metadata.version`。改动 skill 时同步升版本 +
+更新 `CHANGELOG.md`。
+
+`bilin-admissions-consultant` v4.0 起，方向设计是独立的一步（Step 8 硬闸）：
+必须先产出《方向预案》交人工确认，才能写完整方案。
 
 ## 目录约定
 
