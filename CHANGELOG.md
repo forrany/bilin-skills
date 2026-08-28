@@ -6,6 +6,15 @@
 
 ## [Unreleased]
 
+### Added
+
+- `archive/bilin-share/`：收编比邻分享会工作流的 4 个已停用 skill（case-screener /
+  shareflow-builder / shareflow-review / shareflow-to-article）及 `_shared/` 共享目录。
+  以**归档**状态收编：位于 `archive/` 而非 `skills/`，不会被 `install.sh` 软链，
+  因此不会被任何 agent 加载或触发。快照取自 `~/Project/bilin-share` 的 `80fdd18`。
+
+  归档原因：该工作流 2026 年用过，之后未再继续。恢复方式见 `archive/README.md`。
+
 ## [0.1.0] - 2026-08-28
 
 ### Added
@@ -30,6 +39,8 @@
 
 ## 待办
 
-- [ ] 把 `~/Project/bilin-share/skills/` 下的 4 个 shareflow skill（case-screener / shareflow-builder / shareflow-review / shareflow-to-article）收编进来，届时 skill 只存在一处
-- [ ] 三个 skill 的 frontmatter 补 `version` 字段
-- [ ] 接入远端（GitHub private），并确认是否给比邻开只读权限
+- [x] 收编 `~/Project/bilin-share/skills/` 下 4 个 shareflow skill（已按归档状态完成）
+- [ ] 三个在用 skill 的 frontmatter 补 `version` 字段
+- [ ] 确认远端仓库可见性为 private，并决定是否给比邻开只读权限
+- [ ] 处理 `~/Project/bilin-evalution-system` 的 69 个未提交改动（含真实学生姓名，
+      需先决定脱敏策略再提交）

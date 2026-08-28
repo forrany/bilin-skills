@@ -14,14 +14,17 @@
 
 ```
 bilin-skills/
-├── skills/          # 每个 skill 一个目录，可独立分发
+├── skills/          # 在用。每个 skill 一个目录，可独立分发
 │   └── <skill-name>/
 │       ├── SKILL.md        # 入口，frontmatter 含 name / description
 │       ├── references/     # 按需加载的子文档，不一次全读
 │       └── assets/         # skill 自带资源（如 logo）
+├── archive/         # 已停用。不会被软链、不会被 agent 读到
 ├── CHANGELOG.md     # 版本凭证，务必维护
-└── install.sh       # 把 skills 软链到各 agent 加载目录
+└── install.sh       # 把 skills/ 软链到各 agent 加载目录（不碰 archive/）
 ```
+
+`install.sh` 只扫 `skills/`，`archive/` 下的内容不会生效。详见 [`archive/README.md`](archive/README.md)。
 
 新增 skill 时：在 `skills/` 下建同名目录，`SKILL.md` 的 `name` 字段必须与目录名一致。
 

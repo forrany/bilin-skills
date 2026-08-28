@@ -3,3 +3,4 @@ _user_meta.json
 *.zip
 *.pyc
 node_modules/
+.claude/
