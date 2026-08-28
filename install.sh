@@ -35,7 +35,10 @@ link_one() {
 main() {
   local selected=("$@")
   if [ ${#selected[@]} -eq 0 ]; then
-    mapfile -t selected < <(find "$SKILLS_DIR" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort)
+    # 用 while-read 而非 mapfile：macOS 自带 bash 为 3.2，无 mapfile
+    while IFS= read -r name; do
+      [ -n "$name" ] && selected+=("$name")
+    done < <(find "$SKILLS_DIR" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort)
   fi
 
   echo "仓库：$REPO"
