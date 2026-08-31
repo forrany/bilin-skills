@@ -1,0 +1,27 @@
+interface:
+  display_name: 比邻留学 · 美本活动列表评估
+  short_description: 审核美本申请活动列表，产出 4 维 0-6 评分、三层匹配诊断、三级 red mark、排序与逐条修改建议。
+  default_prompt: 帮我评估这个学生的活动列表。申请专业 {{major}}，目标校 {{schools}}。
+  inputs:
+    required: [major, target_schools, activity_list(title,description,position,time)]
+    optional: [personal_statement, supplemental_essays, recommendations]
+  outputs:
+    report: 7 节固定结构
+    scores: 0-6 × 4 维 overall/major_fit/school_fit/essay_coherence
+    risks: 黄橙红三级 + 真独立活动占比
+  gates:
+    - 缺 major 或 target_schools 即停工并发 INTAKE.md
+    - school_fit 必须检索，查不到标待核实
+    - 分数必须配顾问式段落
+    - 必须计算真独立活动占比
+    - 事实性内容不得编造
+
+compatibility:
+  canonical_format: agent-skills
+  adapter_targets: [generic, agent-skills-compatible]
+  activation: {mode: description_routed}
+  execution: {context: inline, shell: bash}
+  trust: {source_tier: local, remote_inline_execution: forbid, remote_metadata_policy: ignore_remote_metadata}
+  degradation:
+    generic: {status: full, note: 纯 Markdown + YAML，无脚本依赖。}
+    agent-skills-compatible: {status: full, note: canonical SKILL.md + interface.yaml 结构。}

@@ -7,6 +7,7 @@
 | Skill | 用途 | 版本 |
 |-------|------|------|
 | `skills/bilin-admissions-consultant` | 美本申请顾问：方向设计、案例评估、定校定专业、文书方向 | 4.0 |
+| `skills/bilin-activity-list-review` | 美本申请活动列表评估：4 维 0-6 诊断分、三层匹配诊断、三级 red mark、排序与逐条修改建议 | 1.0 |
 | `skills/bilin-wechat-essay-write` | 公众号文章写作：hook 设计、风格模仿、成稿 | 3.0 |
 | `skills/bilin-wechat-topic-brainstorm` | 公众号选题发散：按维度拆解选题空间 | 1.0 |
 
@@ -52,6 +53,8 @@ bilin-skills/
 ## 注意事项
 
 **仓库保持私有。** `bilin-wechat-essay-write/references/style_samples/` 下 05–07 号样本是比邻已发布的公众号定稿（L 同学系列），属于比邻内容资产；`01–04` 同理。这些是 skill 的风格基准，不要删除，但不要随仓库外传。
+
+**学生材料更要紧。** `bilin-activity-list-review/references/gold-6-yale-jason/` 下是**真实学生的活动列表、补充文书片段与校内 Review Form 评语**。这是 skill 校准"什么叫 6 分"的基准，不要删除，但敏感度高于公众号样本——不要随仓库外传，也不要拿去做示例演示。
 
 **打包发布产物**（`~/.agents/skills/*.zip`）不在本仓库内，由发布流程另行生成。
 

@@ -1,0 +1,96 @@
+{
+  "name": "bilin-activity-list-review",
+  "version": "1.0.0",
+  "owner": "比邻留学 · 顾问团队",
+  "updated_at": "2026-08-31",
+  "review_due": "2026-11-30",
+  "status": "active",
+  "maturity_tier": "production",
+  "lifecycle_stage": "v1.0-initial-release",
+  "context_budget_tier": "production",
+  "skill_archetype": "production",
+  "org": "bilin-admissions",
+  "summary": "美本申请活动列表评估：4 维 0-6 评分 + 三层匹配诊断 + 三级 red mark + 排序与逐条修改建议。",
+  "review_cadence": "每季度一次，或客户反馈评分口径需调整时",
+  "target_platforms": ["generic", "agent-skills-compatible"],
+  "factory_components": [
+    "references",
+    "agents",
+    "evals",
+    "reports",
+    "references/SCORING.md",
+    "references/REDMARK.md",
+    "references/FIELD-CHECKLIST.md",
+    "references/REPORT-TEMPLATE.md",
+    "references/INTAKE.md",
+    "references/gold-6-yale-jason/README.md",
+    "agents/interface.yaml",
+    "evals/trigger_cases.json",
+    "reports/output-risk-profile.md",
+    "reports/artifact-design-profile.md",
+    "reports/validation-run-2026-08-28.md"
+  ],
+  "validation": {
+    "date": "2026-08-28",
+    "method": "资深顾问角色独立干跑（事先不告知真实分数）+ 硬闸测试 + 低分反例测试",
+    "gold_case_result": "Jason/Yale 四维均打到量表顶端 6/6/6/6（注：与耶鲁 EC=6 数字相同属巧合，两者量表不同，不构成互相验证；有意义的是独立执行者能识别出顶端列表）",
+    "gate_test_result": "缺专业+缺学校 → 硬闸拦截，正确发出 INTAKE 清单",
+    "counterexample_result": "虚构 CS/CMU 问题列表 → 2/2/2/2，🔴1 🟠3 🟡2，真独立占比 70%",
+    "evidence": "reports/validation-run-2026-08-28.md"
+  },
+  "distribution": "private",
+  "distribution_notes": "references/gold-6-yale-jason/ 下含比邻内部教学资产与学生材料，仓库保持私有，不要外传。",
+  "version_note": "manifest 用三段式版本号（schema 要求）；SKILL.md frontmatter 用二段式（比邻仓库既有约定）。两者同步递增。",
+  "known_limitations": [
+    "仅评估已成型的活动列表，不做从零规划",
+    "学校匹配度依赖公开资料质量，小众学校或政策变动可能查不全",
+    "真实性只做文档层面的可核查性判断，不做背景调查"
+  ],
+  "scoring_basis": {
+    "scale": "0-6",
+    "nature": "改进指引用的诊断分",
+    "does_not": [
+      "不对应任何学校的内部 reader 评分（各校量表不同：有的 1-7，有的 1-9）",
+      "不预测录取概率",
+      "不以任何单个标杆学生的得分为校准目标"
+    ],
+    "grounded_in": "Common App 活动列表的跨校通用质量标准（全平台同一份表，8 条判据见 SCORING.md 开篇）"
+  },
+  "resolved_questions": [
+    {
+      "q": "0-6 量表是否要与耶鲁 1-7 制（样例 EC=6）对齐",
+      "decision": "不对齐，做成独立诊断分",
+      "date": "2026-08-31",
+      "rationale": "各校评分规则不同，本量表不对应也不预测任何一个；判据扎根于 Common App 的跨校通用标准，因为表只有一份、优秀的学生拿到多个 offer。"
+    },
+    {
+      "q": "红色 red mark 是「打回重写」还是「允许小修」",
+      "decision": "分级处理：单条红 = 该条必改；≥2 条红 或 真独立占比 ≥70% = 整份重做",
+      "date": "2026-08-31",
+      "rationale": "二选一太粗。「伪造奖项」与「占比刚好 70%」严重程度差很远，用条数+占比双条件区分。"
+    },
+    {
+      "q": "排序建议是否必须给到具体位次",
+      "decision": "是，必须给到 1-10 的具体位次 + 每条 20-40 字理由",
+      "date": "2026-08-31",
+      "rationale": "客户录音原话「排序，就是要对 order 有一个建议」。「相关活动上移」不算建议。"
+    },
+    {
+      "q": "老师评语是否独立成评分维度",
+      "decision": "否，保留为第 2 节的 reader 视角校验器",
+      "date": "2026-08-31",
+      "rationale": "不是每个学生都有推荐信/评语，独立成维会造成大面积 N/A。作为校验器使用价值更高，并在 INTAKE 清单里列为「可选」。"
+    },
+    {
+      "q": "是否需要「轻量模式」（只做终稿质检）",
+      "decision": "v1.0 不加",
+      "date": "2026-08-31",
+      "rationale": "不为想象的需求加结构。先让顾问用起来，若真实使用中出现「只想要质检」的高频场景，再据实加入。"
+    }
+  ],
+  "next_candidates": [
+    "轻量模式（终稿质检）—— 待真实使用数据证明有需求",
+    "多顾问交叉验证打分稳定性（当前阈值未经多人校准）",
+    "真实学生案例跑通后回看 output-risk-profile 的 10 条风险是否命中"
+  ]
+}

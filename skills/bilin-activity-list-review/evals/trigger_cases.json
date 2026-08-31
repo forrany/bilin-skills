@@ -1,0 +1,125 @@
+{
+  "recommended_threshold": 0.33,
+  "negative_patterns": [
+    "从零规划",
+    "帮我规划活动",
+    "设计一套活动",
+    "选校",
+    "定校",
+    "定专业",
+    "申什么学校",
+    "写主文书",
+    "写补充文书",
+    "写一篇公众号",
+    "公众号选题",
+    "头脑风暴",
+    "只要总结",
+    "翻译一下"
+  ],
+  "should_trigger": [
+    {
+      "text": "帮我看一下这个学生的活动列表",
+      "family": "review_activity_list"
+    },
+    {
+      "text": "评估一下这份 activity list",
+      "family": "review_activity_list"
+    },
+    {
+      "text": "这个学生的 EC list 能打几分",
+      "family": "score_activity_list"
+    },
+    {
+      "text": "审核一下活动列表，申请方向是 CS，ED 康奈尔",
+      "family": "review_activity_list"
+    },
+    {
+      "text": "活动列表要不要调整顺序，帮我重排一下",
+      "family": "reorder_activity_list"
+    },
+    {
+      "text": "检查一下活动和主文书有没有矛盾",
+      "family": "essay_coherence_check"
+    },
+    {
+      "text": "这些活动跟他申的经济专业匹配吗",
+      "family": "major_fit_check"
+    },
+    {
+      "text": "Review this student's activity list for their Yale application",
+      "family": "review_activity_list"
+    },
+    {
+      "text": "这份活动列表的可核查性怎么样，会不会被怀疑真实性",
+      "family": "verifiability_check"
+    },
+    {
+      "text": "活动列表的描述要怎么改，帮我逐条给建议",
+      "family": "field_rewrite"
+    },
+    {
+      "text": "这个学生的十项活动能不能撑得起他申的生物方向",
+      "family": "major_fit_check"
+    },
+    {
+      "text": "把活动列表的 title 和 description 都过一遍",
+      "family": "field_rewrite"
+    }
+  ],
+  "should_not_trigger": [
+    {
+      "text": "帮这个学生从零规划一套活动",
+      "family": "activity_planning"
+    },
+    {
+      "text": "这个学生适合申什么学校",
+      "family": "school_selection"
+    },
+    {
+      "text": "帮他定专业，CS 还是经济",
+      "family": "major_selection"
+    },
+    {
+      "text": "帮我写主文书",
+      "family": "essay_writing"
+    },
+    {
+      "text": "写一篇公众号文章讲这个 case",
+      "family": "wechat_essay"
+    },
+    {
+      "text": "脑暴一下公众号选题",
+      "family": "wechat_brainstorm"
+    },
+    {
+      "text": "把这份成绩单总结一下",
+      "family": "summarization"
+    },
+    {
+      "text": "翻译一下这封邮件",
+      "family": "translation"
+    },
+    {
+      "text": "这个学生的申请策略整体怎么定",
+      "family": "strategy_design"
+    },
+    {
+      "text": "设计一下这个学生的申请主线",
+      "family": "direction_design"
+    }
+  ],
+  "near_neighbor": [
+    {
+      "text": "这个学生的活动列表太弱了，帮我重新设计一套活动",
+      "family": "list_weak_then_plan"
+    },
+    {
+      "text": "基于这份活动列表，帮我重新规划一下申请主线",
+      "family": "list_then_strategy"
+    },
+    {
+      "text": "帮我从零规划一份活动列表",
+      "family": "list_from_scratch"
+    }
+  ]
+}

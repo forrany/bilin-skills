@@ -1,0 +1,236 @@
+{
+  "optimizer_hints": {
+    "capability": "Review a US undergraduate applicant's Common App activity list against their major, target schools, and essays",
+    "inputs": [
+      "activity list",
+      "Common App activities",
+      "EC list",
+      "personal statement",
+      "supplemental essays",
+      "major",
+      "target schools",
+      "活动列表",
+      "活动清单",
+      "主文书",
+      "补充文书",
+      "申请专业",
+      "目标校"
+    ],
+    "trigger_actions": [
+      "review an activity list",
+      "score an activity list",
+      "check essay coherence",
+      "reorder activities",
+      "rewrite activity descriptions",
+      "assess verifiability",
+      "审核活动列表",
+      "给活动列表打分",
+      "检查专业匹配",
+      "检查文书一致性",
+      "调整活动排序",
+      "查真实性"
+    ],
+    "exclusions": [
+      "planning activities from scratch",
+      "school selection",
+      "major selection",
+      "writing essays",
+      "WeChat article writing",
+      "summary-only requests",
+      "translation-only requests",
+      "从零规划活动",
+      "选校定校",
+      "定专业",
+      "写文书",
+      "公众号文章"
+    ],
+    "artifacts": [
+      "activity list",
+      "Common App export",
+      "活动列表"
+    ]
+  },
+  "fallback_positive_concepts": [
+    "review_activity_list",
+    "improve_activity_list",
+    "alignment_check"
+  ],
+  "positive_concepts": {
+    "review_activity_list": {
+      "weight": 0.5,
+      "phrases": [
+        "活动列表",
+        "活动清单",
+        "十项活动",
+        "十件活动",
+        "课外活动",
+        "活动和",
+        "活动能",
+        "活动跟",
+        "活动的",
+        "看一下",
+        "审核",
+        "评估",
+        "审一下",
+        "过一遍",
+        "帮我看看",
+        "activity list",
+        "activities list",
+        "ec list",
+        "common app",
+        "review",
+        "look at"
+      ]
+    },
+    "improve_activity_list": {
+      "weight": 0.3,
+      "phrases": [
+        "打分",
+        "评分",
+        "几分",
+        "什么水平",
+        "够不够",
+        "竞争力",
+        "排序",
+        "顺序",
+        "重排",
+        "哪条放前面",
+        "修改",
+        "改写",
+        "润色",
+        "怎么改",
+        "逐条",
+        "建议",
+        "title",
+        "description",
+        "position",
+        "score",
+        "reorder",
+        "rewrite",
+        "polish"
+      ]
+    },
+    "alignment_check": {
+      "weight": 0.2,
+      "phrases": [
+        "专业匹配",
+        "学校匹配",
+        "匹配吗",
+        "撑得起",
+        "申请方向",
+        "主文书",
+        "补充文书",
+        "personal statement",
+        "why major",
+        "why school",
+        "矛盾",
+        "一致",
+        "对得上",
+        "口径",
+        "冲突",
+        "真实性",
+        "可核查",
+        "可验证",
+        "可信",
+        "怀疑",
+        "背书",
+        "独立活动",
+        "verifiab",
+        "credible"
+      ]
+    }
+  },
+  "negative_concepts": {
+    "activity_planning": {
+      "weight": 0.3,
+      "exclusive": true,
+      "phrases": [
+        "从零规划",
+        "帮我规划活动",
+        "设计一套活动",
+        "设计一下活动",
+        "该做哪些活动",
+        "活动规划",
+        "规划一下活动",
+        "plan activities",
+        "design activities"
+      ]
+    },
+    "school_selection": {
+      "weight": 0.3,
+      "exclusive": true,
+      "phrases": [
+        "选校",
+        "定校",
+        "申什么学校",
+        "适合申什么学校",
+        "选哪所学校",
+        "which schools should"
+      ]
+    },
+    "major_selection": {
+      "weight": 0.3,
+      "exclusive": true,
+      "phrases": [
+        "定专业",
+        "选专业",
+        "申什么专业",
+        "该申什么专业",
+        "which major should"
+      ]
+    },
+    "essay_writing": {
+      "weight": 0.3,
+      "exclusive": true,
+      "phrases": [
+        "写主文书",
+        "写文书",
+        "写篇文书",
+        "帮我写补充文书",
+        "起草文书",
+        "write my personal statement",
+        "write my essay"
+      ]
+    },
+    "wechat_content": {
+      "weight": 0.32,
+      "exclusive": true,
+      "phrases": [
+        "公众号",
+        "小红书",
+        "脑暴选题",
+        "wechat article"
+      ]
+    },
+    "strategy_design": {
+      "weight": 0.28,
+      "exclusive": true,
+      "phrases": [
+        "申请策略",
+        "申请主线",
+        "整体怎么定",
+        "application strategy"
+      ]
+    },
+    "summarize_only": {
+      "weight": 0.3,
+      "exclusive": true,
+      "phrases": [
+        "总结一下",
+        "概括一下",
+        "提炼重点",
+        "just summarize"
+      ]
+    },
+    "translate_only": {
+      "weight": 0.35,
+      "exclusive": true,
+      "phrases": [
+        "翻译一下",
+        "译成中文",
+        "译成英文",
+        "translate"
+      ]
+    }
+  }
+}
