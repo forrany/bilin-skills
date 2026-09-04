@@ -1,0 +1,257 @@
+{
+  "optimizer_hints": {
+    "capability": "Audit an already-filled Common App form for factual errors, compliance issues, and cross-material inconsistencies",
+    "inputs": [
+      "Common App form",
+      "CA sections or screenshots",
+      "passport",
+      "transcript",
+      "standardized test score reports",
+      "personal statement",
+      "supplemental essays",
+      "target school list",
+      "recommender status",
+      "CA 表单",
+      "Common App",
+      "护照",
+      "成绩单",
+      "标化成绩单",
+      "主文书",
+      "补充文书",
+      "目标校清单",
+      "推荐人状态"
+    ],
+    "trigger_actions": [
+      "review a filled Common App form",
+      "check for filling errors",
+      "verify name/GPA/activity-name consistency",
+      "check testing policy compliance",
+      "pre-submission final check",
+      "check recommender submission status",
+      "check application round and college selection",
+      "check for supplement cross-contamination",
+      "审核 CA 填写",
+      "查填写错误",
+      "提交前终检",
+      "查一致性",
+      "查标化政策",
+      "查推荐人状态",
+      "查申请轮次",
+      "查串稿"
+    ],
+    "exclusions": [
+      "scoring or ranking activity quality",
+      "rewriting activity descriptions",
+      "planning activities from scratch",
+      "school selection",
+      "major selection",
+      "writing or rewriting essays",
+      "WeChat article writing",
+      "summary-only requests",
+      "translation-only requests",
+      "给活动打分排序",
+      "改写活动描述",
+      "从零规划活动",
+      "选校定校",
+      "定专业",
+      "写文书",
+      "公众号文章"
+    ],
+    "artifacts": [
+      "Common App form or screenshots",
+      "CA 填写截图",
+      "审核报告"
+    ]
+  },
+  "fallback_positive_concepts": [
+    "review_ca_form",
+    "consistency_check",
+    "submission_readiness"
+  ],
+  "positive_concepts": {
+    "review_ca_form": {
+      "weight": 0.4,
+      "phrases": [
+        "common app",
+        "ca 表单",
+        "ca表单",
+        "申请表单",
+        "填写",
+        "填得对不对",
+        "填错了",
+        "检查填写",
+        "审核一下",
+        "复核",
+        "过一遍",
+        "profile",
+        "family",
+        "testing",
+        "courses & grades",
+        "courses and grades",
+        "activities and experiences",
+        "taken 次数",
+        "小时数",
+        "周数",
+        "年级归属"
+      ]
+    },
+    "consistency_check": {
+      "weight": 0.25,
+      "phrases": [
+        "一致性",
+        "对不上",
+        "对一遍",
+        "口径",
+        "矛盾",
+        "冲突",
+        "两个版本",
+        "串稿",
+        "残留",
+        "别的学校",
+        "他校",
+        "姓名一致",
+        "gpa",
+        "成绩单一致",
+        "self-reported",
+        "自报分数"
+      ]
+    },
+    "policy_check": {
+      "weight": 0.2,
+      "phrases": [
+        "标化政策",
+        "test-optional",
+        "test optional",
+        "test-required",
+        "强制标化",
+        "恢复标化",
+        "sat",
+        "act",
+        "toefl",
+        "ielts",
+        "多邻国",
+        "duolingo",
+        "ap 科目",
+        "政策合不合规"
+      ]
+    },
+    "submission_readiness": {
+      "weight": 0.15,
+      "phrases": [
+        "提交前",
+        "终检",
+        "能不能交",
+        "可以交了吗",
+        "最后把关",
+        "推荐人",
+        "recommender",
+        "ferpa",
+        "counselor",
+        "已提交",
+        "邀请",
+        "ed",
+        "ea",
+        "rd",
+        "轮次",
+        "学院",
+        "截止",
+        "deadline"
+      ]
+    }
+  },
+  "negative_concepts": {
+    "activity_quality_scoring": {
+      "weight": 0.25,
+      "exclusive": false,
+      "note": "非互斥：顾问常在同一句话里既问小时数合理性（本 skill）又问排序质量（activity skill），排他会导致混合场景漏触发，故由 trigger_cases 的 hybrid 用例单独约束。",
+      "phrases": [
+        "活动列表打分",
+        "给活动打分",
+        "活动排序建议",
+        "活动怎么排序",
+        "哪些活动要重写",
+        "活动描述写得不好",
+        "帮我改改活动描述",
+        "评估活动列表怎么样",
+        "score my activities",
+        "rank my activities"
+      ]
+    },
+    "activity_planning": {
+      "weight": 0.3,
+      "exclusive": true,
+      "phrases": [
+        "从零规划",
+        "帮我规划活动",
+        "设计一套活动",
+        "该做哪些活动",
+        "活动规划",
+        "plan activities"
+      ]
+    },
+    "school_selection": {
+      "weight": 0.3,
+      "exclusive": true,
+      "phrases": [
+        "选校",
+        "定校",
+        "申什么学校",
+        "适合申什么学校",
+        "which schools should"
+      ]
+    },
+    "major_selection": {
+      "weight": 0.3,
+      "exclusive": true,
+      "phrases": [
+        "定专业",
+        "选专业",
+        "申什么专业",
+        "该申什么专业",
+        "which major should"
+      ]
+    },
+    "essay_writing": {
+      "weight": 0.3,
+      "exclusive": true,
+      "phrases": [
+        "写主文书",
+        "写文书",
+        "帮我写补充文书",
+        "起草文书",
+        "把文书写得更深入",
+        "write my essay"
+      ]
+    },
+    "wechat_content": {
+      "weight": 0.32,
+      "exclusive": true,
+      "phrases": [
+        "公众号",
+        "小红书",
+        "脑暴选题",
+        "wechat article"
+      ]
+    },
+    "summarize_only": {
+      "weight": 0.3,
+      "exclusive": true,
+      "phrases": [
+        "总结一下",
+        "概括一下",
+        "提炼重点",
+        "just summarize"
+      ]
+    },
+    "translate_only": {
+      "weight": 0.35,
+      "exclusive": true,
+      "phrases": [
+        "翻译一下",
+        "译成中文",
+        "译成英文",
+        "translate"
+      ]
+    }
+  }
+}

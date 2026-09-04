@@ -1,0 +1,27 @@
+interface:
+  display_name: 比邻留学 · Common App 表单填写审核
+  short_description: 审核 Common App 10 大模块填写内容，查错误、查合规、查跨材料一致性，产出红橙黄三级问题清单 + 待顾问确认清单 + 一页总览。
+  default_prompt: 帮我审核这个学生的 Common App 填写。目标校 {{schools}}，已填板块 {{sections}}。
+  inputs:
+    required: [ca_form_content(any_sections), target_schools]
+    optional: [passport, transcript, test_score_reports, personal_statement, supplemental_essays, intended_major, recommender_status, my_colleges_settings]
+  outputs:
+    report: 6 节固定结构（总览 / 逐模块问题 / 跨模块一致性 / 待确认清单 / 终检结论 / 待向官方确认）
+    risks: 黄橙红三级问题清单
+    coverage: 各板块状态（通过 / 有问题 / 未覆盖 / 无法核验）
+  gates:
+    - 缺 CA 内容（至少一个板块）或目标校清单即停工并发 INTAKE.md
+    - 无比对源时硬校验标「无法核验」，不默认通过
+    - 标化政策必须逐校 WebSearch，查不到标待核实
+    - 只查错不打分，活动质量评估路由 bilin-activity-list-review
+    - 每条问题必须给具体改法
+
+compatibility:
+  canonical_format: agent-skills
+  adapter_targets: [generic, agent-skills-compatible]
+  activation: {mode: description_routed}
+  execution: {context: inline, shell: bash}
+  trust: {source_tier: local, remote_inline_execution: forbid, remote_metadata_policy: ignore_remote_metadata}
+  degradation:
+    generic: {status: full, note: 纯 Markdown + YAML，无脚本依赖。}
+    agent-skills-compatible: {status: full, note: canonical SKILL.md + interface.yaml 结构。}

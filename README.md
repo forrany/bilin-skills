@@ -7,7 +7,8 @@
 | Skill | 用途 | 版本 |
 |-------|------|------|
 | `skills/bilin-admissions-consultant` | 美本申请顾问：方向设计、案例评估、定校定专业、文书方向 | 4.0 |
-| `skills/bilin-activity-list-review` | 美本申请活动列表评估：4 维 0-6 诊断分、三层匹配诊断、三级 red mark、排序与逐条修改建议 | 1.0 |
+| `skills/bilin-activity-list-review` | 美本申请活动列表评估：4 维 0-6 诊断分、三层匹配诊断、三级 red mark、排序与逐条修改建议 | 1.1 |
+| `skills/bilin-commonapp-review` | Common App 表单填写审核：10 大模块查错（含 Recommenders & FERPA、My Colleges）、跨模块一致性四链核对、红橙黄三级问题清单、待顾问确认清单、支持分次提交 | 1.4 |
 | `skills/bilin-wechat-essay-write` | 公众号文章写作：hook 设计、风格模仿、成稿 | 3.0 |
 | `skills/bilin-wechat-topic-brainstorm` | 公众号选题发散：按维度拆解选题空间 | 1.0 |
 

@@ -1,0 +1,151 @@
+{
+  "expect_grammar": {
+    "note": "统一枚举，禁止自由文本复合串。评测脚本按前缀匹配。",
+    "forms": [
+      "route:<skill-name>",
+      "hybrid:<skill-a>+<skill-b>",
+      "gate:intake",
+      "not:<skill-name>"
+    ]
+  },
+  "cases": [
+    {
+      "id": "T1-route",
+      "query": "帮我检查一下这个学生的 Common App 填得对不对，提交前把把关",
+      "expect": "route:bilin-commonapp-review",
+      "note": "核心触发：CA 表单查错/终检"
+    },
+    {
+      "id": "T2-route",
+      "query": "CA 表单里 Testing 那块，TOEFL Taken 次数我拿不准，帮我核一下",
+      "expect": "route:bilin-commonapp-review",
+      "note": "模块级触发：Taken 次数核查"
+    },
+    {
+      "id": "T3-route",
+      "query": "学生填完 Family 和 Profile 了，先审这两个板块，后面的还没填",
+      "expect": "route:bilin-commonapp-review",
+      "note": "分次提交：填到哪审到哪"
+    },
+    {
+      "id": "T4-route-recommenders",
+      "query": "推荐人都邀请了，帮我看看提交状态对不对，FERPA 签了没",
+      "expect": "route:bilin-commonapp-review",
+      "note": "第九模块：Recommenders & FERPA"
+    },
+    {
+      "id": "T5-route-mycolleges",
+      "query": "ED 那所学校的学院是不是选错了，轮次和必答问题再帮我核一遍",
+      "expect": "route:bilin-commonapp-review",
+      "note": "第十模块：My Colleges 逐校核对"
+    },
+    {
+      "id": "T6-route-crosscontamination",
+      "query": "补充文书里好像混进了别的学校的名字，帮我查一下",
+      "expect": "route:bilin-commonapp-review",
+      "note": "S5 串稿检查（须走二段式判据，区分夏校等合法提及）"
+    },
+    {
+      "id": "T7-route-consistency",
+      "query": "文书里写的活动名字和活动列表对不上，帮我查一遍所有材料的一致性",
+      "expect": "route:bilin-commonapp-review",
+      "note": "跨模块一致性触发"
+    },
+    {
+      "id": "T8-route-policy",
+      "query": "我们目标校有几所今年标化政策改了，核对一下学生 Testing 板块填的合不合规",
+      "expect": "route:bilin-commonapp-review",
+      "note": "标化政策核对（必须检索不脑补）"
+    },
+    {
+      "id": "T9-gate",
+      "query": "审核一下这份 CA 材料",
+      "expect": "gate:intake",
+      "note": "只给截图无目标校清单 → 触发硬闸，发 INTAKE 清单"
+    },
+    {
+      "id": "T10-antiroute-activity",
+      "query": "帮我评估这个学生的活动列表怎么样，打分排个序，哪些要重写",
+      "expect": "route:bilin-activity-list-review",
+      "note": "反例：活动质量评估不归本 skill"
+    },
+    {
+      "id": "T11-antiroute-plan",
+      "query": "学生 10 年级，帮我们规划一下接下来的活动安排和选校",
+      "expect": "route:bilin-admissions-consultant",
+      "note": "反例：规划类请求"
+    },
+    {
+      "id": "T12-antiroute-essay",
+      "query": "帮学生把 Why Us 文书写得更深入一点，多绑定一些学校的资源",
+      "expect": "not:bilin-commonapp-review",
+      "note": "反例：文书写作本身，本仓库无申请文书 skill，交人工"
+    },
+    {
+      "id": "T13-hybrid-hours-and-order",
+      "query": "活动列表里的小时数好像不合理，顺便看看排序和描述写得好不好",
+      "expect": "hybrid:bilin-commonapp-review+bilin-activity-list-review",
+      "note": "混合：小时数合理性归本 skill，排序/描述质量路由 activity skill"
+    },
+    {
+      "id": "T14-stress-can-we-submit",
+      "query": "帮我看看这个学生的申请材料能不能交了",
+      "expect": "route:bilin-commonapp-review",
+      "note": "压力测试：consultant 描述更宽泛易抢单；提交前终检语义应压过泛化表述"
+    },
+    {
+      "id": "T15-stress-activity-vs-essay",
+      "query": "把活动列表和主文书对一遍，有没有对不上的",
+      "expect": "route:bilin-commonapp-review",
+      "note": "压力测试：双方 description 都含活动+文书+一致性；事实层归本 skill，叙事层归 activity"
+    },
+    {
+      "id": "T16-stress-vague-review",
+      "query": "活动列表填好了，帮我整体看一遍有没有问题",
+      "expect": "route:bilin-commonapp-review",
+      "note": "压力测试：模糊表述两边都命中，应先本 skill 查错，再提示同轮 activity 评估"
+    },
+    {
+      "id": "T17-stress-ed-supplement",
+      "query": "ED 校补充文书里提到的活动和列表对不上",
+      "expect": "route:bilin-commonapp-review",
+      "note": "压力测试：S2/A2 事实核对，activity 的 essay coherence 只沾叙事边"
+    },
+    {
+      "id": "T18-antiroute-rewrite-description",
+      "query": "这个学生的活动描述写得不好，帮我改改",
+      "expect": "route:bilin-activity-list-review",
+      "note": "压力测试：改写归 activity；本 skill A5 只出黄灯不代写"
+    },
+    {
+      "id": "T19-route-ap-policy",
+      "query": "学生 AP 只填了 5 分的那几门，3 分的没填，这样行不行",
+      "expect": "route:bilin-commonapp-review",
+      "note": "T3 分支：目标校要求全报时升橙（Stanford/Caltech 二手来源须核实官网）"
+    },
+    {
+      "id": "T20-route-det",
+      "query": "学生多邻国考了两次，CA 里该怎么填，填最高那次可以吗",
+      "expect": "route:bilin-commonapp-review",
+      "note": "T5b：次数不判违规，逐位核对每次日期与分数；官方无公告佐证"
+    },
+    {
+      "id": "T21-route-a4-inversion",
+      "query": "理工科学生的活动列表第一条是社区服务，科研和竞赛排在最后，这个顺序行不行",
+      "expect": "route:bilin-commonapp-review",
+      "note": "回归（v1.3）：A4 类别级明显倒挂 🟡 内联，不再纯路由"
+    },
+    {
+      "id": "T22-route-family-duty",
+      "query": "学生文书里写了很多照顾弟弟、给家里做翻译的经历，但活动列表里没有这些",
+      "expect": "route:bilin-commonapp-review",
+      "note": "回归（v1.3）：A7 家庭责任类经历检查"
+    },
+    {
+      "id": "T23-route-past-season",
+      "query": "去年这个学生已经提交的 CA 表，我拿来给新人做复盘，帮我审一遍当时有什么问题",
+      "expect": "route:bilin-commonapp-review",
+      "note": "回归（v1.3.1）：历史季 + 已提交材料 → 切换取数规则、第 5 节走提交后动作双轨"
+    }
+  ]
+}

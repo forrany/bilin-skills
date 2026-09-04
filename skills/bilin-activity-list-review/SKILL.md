@@ -1,10 +1,10 @@
 ---
 name: bilin-activity-list-review
-description: 审核美本申请的 Common App 活动列表：对照 intended major、target schools 与 essays 评估。Use when 审核/评估 活动列表、activity list、EC list、打分、排序、提修改建议、查专业匹配/学校匹配/主文书矛盾、查真实性与可核查性。产出 7 节报告：four 0-6 scores（overall / major fit / school fit / essay coherence）、red mark 分级、ordering advice、field-by-field rewrite。开工前必须有 major 与目标校。Does NOT plan activities, write essays, or select schools — route to bilin-admissions-consultant。
+description: 审核美本申请的 Common App 活动列表：对照 intended major、target schools 与 essays 评估。Use when 审核/评估 活动列表、activity list、EC list、打分、排序、提修改建议、查专业匹配/学校匹配/主文书矛盾、查真实性与可核查性。产出 7 节报告：four 0-6 scores（overall / major fit / school fit / essay coherence）、red mark 分级、ordering advice、field-by-field rewrite。开工前必须有 major 与目标校。Does NOT plan activities, write essays, or select schools — route to bilin-admissions-consultant。活动条目事实一致性核对（名称/时间/数字/年级 vs CA 表单与文书）归 bilin-commonapp-review；本 skill 的 essay coherence 只评叙事与定位层面。
 license: Proprietary
 metadata:
   org: bilin-admissions
-  version: "1.0"
+  version: "1.1"
 ---
 
 # 比邻留学 · 活动列表评估

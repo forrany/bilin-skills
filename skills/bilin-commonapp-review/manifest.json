@@ -1,0 +1,201 @@
+{
+  "name": "bilin-commonapp-review",
+  "version": "1.4.0",
+  "owner": "比邻留学 · 顾问团队",
+  "updated_at": "2026-09-04",
+  "review_due": "2026-11-30",
+  "status": "active",
+  "maturity_tier": "production",
+  "lifecycle_stage": "v1.4-provenance-and-logic-first",
+  "context_budget_tier": "production",
+  "skill_archetype": "production",
+  "org": "bilin-admissions",
+  "summary": "Common App 10 大模块表单填写查错：红橙黄三级问题清单 + 跨模块一致性四链核对 + 待顾问确认清单 + 一页总览，支持分次提交。",
+  "review_cadence": "每季度一次；申请季换季时必须更新 references/SEASON-2027.md",
+  "target_platforms": ["generic", "agent-skills-compatible"],
+  "factory_components": [
+    "references",
+    "agents",
+    "evals",
+    "reports",
+    "references/MODULE-CHECKLISTS.md",
+    "references/CROSS-MODULE.md",
+    "references/SEASON-2027.md",
+    "references/SEVERITY.md",
+    "references/REPORT-TEMPLATE.md",
+    "references/INTAKE.md",
+    "agents/interface.yaml",
+    "evals/trigger_cases.json",
+    "evals/semantic_config.json",
+    "reports/output-risk-profile.md",
+    "reports/peer-review-2026-08-31.md",
+    "reports/cross-validation-2026-09-01.md",
+    "reports/final-review-2026-09-01.md",
+    "reports/dry-run-2026-09-04.md",
+    "reports/PACKAGING.md"
+  ],
+  "source_material": {
+    "file": "Workflow and Skill参考：Common App填写检查(1).docx",
+    "nature": "比邻顾问经验文档（file-backed fixture，内部资料不外传）",
+    "owner": "比邻顾问团队",
+    "transformed_into": "references/MODULE-CHECKLISTS.md（10 模块检查项）+ CROSS-MODULE.md（一致性链）+ SEASON-2027.md（季节参数）"
+  },
+  "peer_review": {
+    "date": "2026-08-31",
+    "method": "subagent 以资深美本顾问视角同行评审 + 事实核查（WebSearch，检索时间 2026-08-31）",
+    "evidence": "reports/peer-review-2026-08-31.md",
+    "outcome": "5 条必改全采纳（多邻国判据降级待确认 / AP 新增科目修正为 2 门且 Networking 为 2027-28 / 补 S5 串稿检查 🔴 / 链 2 补自报分数逐位核对 / A4·S4 质量判断降为路由提示）。建议改 5 条采纳 4 条（F1 改写、A3 收窄、P4 转待确认、P2 明写月日顺序），Challenges 措辞一并修正。评审建议『E3 整条删除』未采纳：保留为 E3b 经验提醒——源文档是比邻顾问自己的经验规则，有意嵌入，但标注为非错误判定。"
+  },
+  "cross_validation": {
+    "date": "2026-09-01",
+    "method": "派遣两个互不通气的 subagent 独立评审 v1.1 —— A 角『留学运营与合规专家』独立复核上一轮事实结论并查修订质量，B 角『Skill 工程审计师』审内部一致性/路由健壮性/可执行性/仓库约定（不评价留学内容）。检索时间 2026-09-01。",
+    "evidence": "reports/cross-validation-2026-09-01.md",
+    "key_finding": "两个 agent 独立指向同一处失实：v1.1 CHANGELOG 声称已修正的 Challenges 措辞，SEASON-2027.md 实际未改。教训已固化为换季 runbook 的『改完自核对引用点』步骤——评审报告的『✅ 已改』必须回文件复核，不看报告自述。",
+    "outcome": "采纳 14 条（新增 Recommenders & FERPA / My Colleges 两模块；S5 改二段式判据解决误报后保留 🔴；换季 runbook + 数值收敛到 SEASON 单文件；定级打架修复；死路由修正；Yale 裁决推翻上一轮）；部分采纳 2 条；明确不采纳 2 条（S5 降级为提示、改 consultant 的 description）。"
+  },
+  "final_review": {
+    "date": "2026-09-01",
+    "method": "主 leader 派遣三个互不通气 subagent 终审 v1.2：源材料保真度审计（顾问文档逐节对照）/ 工程审计（14 条采纳项回文件核验 + 一致性 + 换季模拟）/ 路由边界裁决（Activities）",
+    "evidence": "reports/final-review-2026-09-01.md",
+    "outcome": "14 条交叉验证采纳项确认 12 条真落地、2 条部分落地、0 条谎报；源材料忠实度 8.5/10，五处有意修正全部站得住；A4 路由裁决=拆两半（类别级倒挂内联 🟡，位次/重写仍路由）。按终审修复 7 类问题后升 v1.3。"
+  },
+  "validation": {
+    "date": "2026-09-04",
+    "type": "dry-run（首次真实案例干跑，隔离 subagent 只读执行）",
+    "case_profile": "国内国际学校 A-Level 体系学生；Fall 2023 入学（历史季）；RD 单校（Cornell AAP / Urban and Regional Studies）；材料含 CA 六板块 + 该校 Questions 与补充文书；已提交状态；故意缺护照/成绩单/官方标化报告/推荐人状态截图以测降级逻辑",
+    "evidence": "reports/dry-run-2026-09-04.md",
+    "result": "抓到 8 条真实问题（1🔴 Founder vs co-founded 职位矛盾 / 2🟠 活动时长超档 + 父母职业笼统 / 5🟡），零误报；T1、S5、A8 三个高误报风险项正确沉默；A7（v1.3 新增）首战命中；降级纪律严格执行无默认通过。执行者自评可用性 7.5/10",
+    "defects_found": 8,
+    "defects_fixed_in": "v1.3.1（A1 口径定义、历史季运行模式、计数锚定规则、报告模板六处补口、E6/A5/F3 判据、单校过闸、evals T23）",
+    "privacy_note": "学生 PII 与文书叙事细节不入库；证据文件只记录 skill 行为",
+    "coverage_gap": "单案例、历史季 + 单校 + 无比对源组合；当季 / 多校 / 全套比对源场景尚未验证"
+  },
+  "output_contract": "6 节固定报告：一页总览 / 逐模块问题清单 / 跨模块一致性专项 / 待顾问确认清单 / 终检结论 / 待向官方确认清单",
+  "rollback_boundary": "删除 skills/bilin-commonapp-review/ 整个目录即可完全回滚；无外部依赖、无脚本副作用",
+  "distribution": "private",
+  "trial_package": {
+    "scope": "SKILL.md + references/*.md（7 文件，约 51 KB）；agents/interface.yaml 视宿主可选",
+    "excluded": ["reports/", "evals/", "manifest.json"],
+    "rationale": "运行时链路只依赖 references/ 六个文件（已核验无死链）；reports 含案例画像不外发，evals 与 manifest 为内部治理资产",
+    "instructions": "reports/PACKAGING.md"
+  },
+  "distribution_notes": "源材料为比邻内部顾问经验文档，仓库保持私有，不要外传。",
+  "version_note": "manifest 用三段式版本号（schema 要求）；SKILL.md frontmatter 用二段式（比邻仓库既有约定）。两者同步递增。",
+  "known_limitations": [
+    "已完成首次真实案例干跑（2026-09-04，历史季 + 单校 + 无比对源组合）；当季在填案例、多校、有全套比对源的场景尚未验证",
+    "只审已填的表，不代填、不规划",
+    "截图输入依赖视觉识别，字段辨认存疑时只能请顾问复核",
+    "标化政策依赖官网检索质量，检索不到只能标待核实",
+    "学校是否公布排名等无法从材料验证的项只能归待确认清单"
+  ],
+  "resolved_questions": [
+    {
+      "q": "与 bilin-activity-list-review 的边界",
+      "decision": "本 skill 只查 Activities 的信息类错误（小时周数、名称一致、年级归属等），质量评估/打分/排序/重写全部路由 activity skill",
+      "date": "2026-08-31",
+      "rationale": "两个 skill 互补不重叠，顾问按需路由；混在一起会让 activity skill 的评分体系被稀释。"
+    },
+    {
+      "q": "为什么不用打分制",
+      "decision": "红橙黄三级 + 状态标注（通过/有问题/未覆盖/无法核验），不做 0-6 评分",
+      "date": "2026-08-31",
+      "rationale": "表单查错场景下填对就是对的，分数没有诊断意义；错误的严重度才是可行动的信息。"
+    },
+    {
+      "q": "季节性规则的组织方式",
+      "decision": "独立 references/SEASON-2027.md，含标化政策检索记录表（回填复用）",
+      "date": "2026-08-31",
+      "rationale": "字数上限、新增 AP、政策类参数每年变；集中一处，换季只改一个文件；政策表还能避免同一申请季内重复检索。"
+    },
+    {
+      "q": "分次提交还是全量才开工",
+      "decision": "支持分次提交，intake 硬闸 = CA 内容（至少一个板块）+ 目标校清单；提交前全量终检",
+      "date": "2026-08-31",
+      "rationale": "贴合顾问边填边审的实际节奏；终检保证提交前有一次完整覆盖。"
+    },
+    {
+      "q": "peer review：E3（课程与专业匹配）是否整条删除",
+      "decision": "保留但拆分：一致性部分归 E3（🟠），专业匹配降为 E3b「经验提醒，非错误判定」",
+      "date": "2026-08-31",
+      "rationale": "该条来自比邻顾问自己的经验文档，是有意嵌入的经验规则；但它确实无客观判据、两人审核会得出不同结论，故标注为方向性提醒而非错误，深度规划归 admissions-consultant。"
+    },
+    {
+      "q": "peer review：两 skill 触发词重叠会路由抖动",
+      "decision": "双向加排除句——活动条目事实一致性归本 skill，activity skill 的 essay coherence 只评叙事与定位；报告末尾固定脚注提示可同轮执行 activity skill",
+      "date": "2026-08-31",
+      "rationale": "避免『审活动列表和文书一致性』类请求两边都抢，也避免顾问两份报告重复对一遍事实。"
+    },
+    {
+      "q": "交叉验证：S5 串稿检查会不会误报（夏校/竞赛/推荐人隶属/父母校友都含他校校名）",
+      "decision": "改二段式判据而非降级：『论述该校为何适合我』段落出现他校校名/专属资源 = 🔴；『个人经历提及』（夏校、大学学分课、他校举办的竞赛、推荐人隶属、父母校友）= 不报。保留 🔴 不降为提示。",
+      "date": "2026-09-01",
+      "rationale": "二段式已解决误报，无需牺牲严重度；串稿是终检最高频的不可逆事故，降为提示等于放弃拦截。"
+    },
+    {
+      "q": "交叉验证：季节参数散落三个文件，「换季只改一个文件」是假的",
+      "decision": "数值单点定义在 SEASON-2027.md，checklist 只写『见 SEASON-2027.md』；新增换季 runbook，含『改完自核对引用点』步骤。",
+      "date": "2026-09-01",
+      "rationale": "半新半旧但能跑完流程的 skill 会造成静默错误，比直接报错危险得多。"
+    },
+    {
+      "q": "交叉验证：Yale 标化政策上一轮判为『口径冲突』是否成立",
+      "decision": "推翻上一轮，Yale = Required（2026-05-27 官方公告后 test-flexible 已终止，AP/IB 不再替代，须交 SAT 或 ACT；持相反说法的来源均早于该公告）。另补 Princeton/Columbia 本季仍 TO、2027-28 转强制。",
+      "date": "2026-09-01",
+      "rationale": "上一轮遇到来源冲突即收工是误判——优先采信更新时间更晚的官方公告即可裁决，不必留给顾问。"
+    },
+    {
+      "q": "交叉验证：是否给 bilin-admissions-consultant 加反向排除句以消除路由抖动",
+      "decision": "不采纳。路由压力测试显示抖动来自 consultant 的宽泛 description 而非两个新 skill 之间，但改别人的 description 风险外溢。本 skill 侧用『提交前终检』等强语义词压过泛化表述，并已把 5 条易误判原话写进 evals 做回归依据。",
+      "date": "2026-09-01",
+      "rationale": "不为一个尚未真实发生的抢单去动另一个正在服役的 skill；真出现再据实处理。"
+    },
+    {
+      "q": "终审三方审计：A4 活动排序是查错还是质量评估（路由到 activity-list-review 是否成立）",
+      "decision": "拆两半：类别级明显倒挂（首位/前三与申请方向参考序列明显冲突）内联 🟡（对齐 E4/E3b 同构先例）；具体位次与重写仍路由 activity skill。不动两个 skill 的 description 触发词，防路由抖动回归",
+      "date": "2026-09-01",
+      "rationale": "源文档把排序列为 6 条信息错误之一且给了参考序列=判据存在；终检报告对不可逆倒挂需要内联结论，纯路由会让终检静默放行。质量半区（打分/位次/重写）路由本身正确，那边有契约承接。"
+    },
+    {
+      "q": "交叉验证检索出的标化政策结论只记录在 CHANGELOG/manifest，运行时不可见",
+      "decision": "回填 SEASON-2027 政策记录表（Harvard 等 9 校 Required、Princeton/Columbia TO、UT Austin/UF/Purdue 等），全部标注「二手来源，待官网复核」",
+      "date": "2026-09-01",
+      "rationale": "元数据不在运行时加载链上，不回填则同一申请季重复检索，违背建表目的；二手标注维持「不脑补」纪律。"
+    },
+    {
+      "q": "干跑暴露：A1 合理性参照表的「每周总小时」「总周数」口径不清（含不含校外？是上限还是合计？）",
+      "decision": "SEASON 参照表上方固化四条口径定义：总小时=同年级全部活动合计含校外；总周数=单条活动 weeks/year 上限而非合计；暑期集中型单列不入学年合计；逐年级分别核对",
+      "date": "2026-09-04",
+      "rationale": "该口径直接决定 🟠 判定，不定义则两个执行者得出两个结论。选「含校外」是从严口径——校外活动同样占用真实时间，只算校内会让超载学生蒙混过关。"
+    },
+    {
+      "q": "干跑暴露：往季案例 / 已提交材料如何运行（当季数值、政策表、板块存在性全部失配）",
+      "decision": "SEASON 新增「历史季案例运行模式」：Step 0 判定申请季 + 五类取数优先级（平台数值 / 板块存在性 / 政策表 / 参照值 / 跨季不变逻辑）+ 已提交材料走「提交后动作双轨」，不写「必须改」",
+      "date": "2026-09-04",
+      "rationale": "顾问用往季案例复盘、带新人是常态；沿用当季数值会静默误判，而拒绝运行等于砍掉一个真实场景。"
+    },
+    {
+      "q": "SEASON-2027 这种硬编码季节文件是否该改为「Agent 自己检索当年要求」",
+      "decision": "分层而非替换。① 顾问经验值（活动时长区间）搜不到官方源 → 固化保留；② 逐校标化政策 → 已强制逐校检索（铁律 2），表只做当季缓存；③ 平台级数值（150 字符/10 条/650 词/300 词）→ 保留为参考但**默认降为提示、不作硬判据**（CA 系统自己会拦，与 activity skill 口径统一），并加参数核实日期 + 12 个月超期自动降级",
+      "date": "2026-09-04",
+      "rationale": "平台数值搜索噪音极大（本项目自身证据：源文档「AP 新增 3 门」「多邻国仅单次」两处错误均来自二手机构稿，耗两轮评审纠正），改成检索反而更不可靠；而过期数值导致的误报（让顾问砍掉合规内容）比漏报危害大。三类事实性质不同，用一套策略处理才是原问题。"
+    },
+    {
+      "q": "A1 活动时长该按经验区间判还是按逻辑判",
+      "decision": "改为两层：第一层逻辑红线（一周 168 小时的物理可能性，学年每周合计 ≥50 h 或两地并行 = 🔴；30–49 h = 🟠；单条 weeks/year 超学年周数 = 🟠）跨季永久有效；第二层顾问经验区间为软参考，超了 🟡 提示 + 要顾问背书，不判错",
+      "date": "2026-09-04",
+      "rationale": "顾问原话诉求是「有学生把一周所有时间填满，显然不合理」——核心是逻辑合理性而非区间合规。经验值固化保留但降为软参考，既保住顾问经验又避免把重活动学生误判为填报错误。"
+    },
+    {
+      "q": "如何防止 AI 在报告里编造判据（幻觉）",
+      "decision": "引入全库统一的五类依据标签（[顾问]/[官方]/[检索 YY-MM]/[推导]/[待确认]），MODULE-CHECKLISTS 全部 50 余条检查项与 SEASON 参数表逐条标注；新增铁律 6：无依据标签的结论不许写进报告，且标签决定等级天花板（[待确认] 不进红橙黄、二手 [检索] 最高 🟠、🔴 只能由 [官方]/[推导]/比对源直接冲突支撑）；报告模板问题格式加「依据」必填字段；checklist 外的新发现必须标 [推导] + 推导链且首次最高 🟡",
+      "date": "2026-09-04",
+      "rationale": "用户要求「每条建议和内容都必须有所依据」。标签化把溯源变成结构约束而非自觉：写不出依据就写不出条目；同时给 skill 成长留了通道——新发现走 [推导] 低等级入口，经顾问确认后再固化升级。"
+    }
+  ],
+  "next_candidates": [
+    "第二轮干跑：当季在填 + 多校 + 全套比对源案例（验证 T2 政策表回填链路、R/M 两模块实际可用性、A4 明显倒挂阈值）",
+    "manifest validation 块已建；README 目录树同步待补",
+    "截图字段复核工作流：字段辨认存疑项的结构化收集格式",
+    "evals semantic_config 的 fallback_positive_concepts 补 policy_check（对齐 activity skill 全量口径）"
+  ]
+}
