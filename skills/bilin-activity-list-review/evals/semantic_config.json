@@ -23,12 +23,17 @@
       "reorder activities",
       "rewrite activity descriptions",
       "assess verifiability",
+      "generate clean version for coach",
+      "compare ED options",
       "审核活动列表",
       "给活动列表打分",
       "检查专业匹配",
       "检查文书一致性",
       "调整活动排序",
-      "查真实性"
+      "查真实性",
+      "出外教版",
+      "改前改后评分",
+      "ED 选项矩阵"
     ],
     "exclusions": [
       "planning activities from scratch",
@@ -137,6 +142,42 @@
         "独立活动",
         "verifiab",
         "credible"
+      ]
+    },
+    "clean_version": {
+      "weight": 0.2,
+      "phrases": [
+        "外教版",
+        "外教",
+        "clean version",
+        "给外教的",
+        "英文版",
+        "coach",
+        "english version",
+        "native speaker",
+        "分专业排序",
+        "按重要性"
+      ]
+    },
+    "ed_major_matrix": {
+      "weight": 0.18,
+      "phrases": [
+        "ed 选项",
+        "ed option",
+        "几所学校",
+        "多个专业",
+        "两个专业",
+        "专业候选",
+        "选 ed",
+        "换 ed",
+        "哪所 ed",
+        "ed 校",
+        "matrix",
+        "矩阵",
+        "比较一下",
+        "改前改后",
+        "预期分",
+        "能提到几分"
       ]
     }
   },

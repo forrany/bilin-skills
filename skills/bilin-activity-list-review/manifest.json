@@ -1,16 +1,16 @@
 {
   "name": "bilin-activity-list-review",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "比邻留学 · 顾问团队",
-  "updated_at": "2026-08-31",
-  "review_due": "2026-11-30",
+  "updated_at": "2026-09-04",
+  "review_due": "2026-12-04",
   "status": "active",
   "maturity_tier": "production",
-  "lifecycle_stage": "v1.1-route-boundary-clarification",
+  "lifecycle_stage": "v1.2-evidence-discipline",
   "context_budget_tier": "production",
   "skill_archetype": "production",
   "org": "bilin-admissions",
-  "summary": "美本申请活动列表评估：4 维 0-6 评分 + 三层匹配诊断 + 三级 red mark + 排序与逐条修改建议。",
+  "summary": "美本申请活动列表评估：4 维 0-6 评分（现状+改后预期）+ 三层匹配诊断 + 三级 red mark + ED×专业矩阵 + 排序与逐条修改建议 + 外教英文 clean version。全流程出处对账防幻觉。",
   "review_cadence": "每季度一次，或客户反馈评分口径需调整时",
   "target_platforms": ["generic", "agent-skills-compatible"],
   "factory_components": [
@@ -23,12 +23,16 @@
     "references/FIELD-CHECKLIST.md",
     "references/REPORT-TEMPLATE.md",
     "references/INTAKE.md",
+    "references/EVIDENCE.md",
+    "references/ED-MAJOR-MATRIX.md",
+    "references/CLEAN-VERSION.md",
     "references/gold-6-yale-jason/README.md",
     "agents/interface.yaml",
     "evals/trigger_cases.json",
     "reports/output-risk-profile.md",
     "reports/artifact-design-profile.md",
-    "reports/validation-run-2026-08-28.md"
+    "reports/validation-run-2026-08-28.md",
+    "reports/field-feedback-2026-09-04.md"
   ],
   "validation": {
     "date": "2026-08-28",
@@ -36,15 +40,16 @@
     "gold_case_result": "Jason/Yale 四维均打到量表顶端 6/6/6/6（注：与耶鲁 EC=6 数字相同属巧合，两者量表不同，不构成互相验证；有意义的是独立执行者能识别出顶端列表）",
     "gate_test_result": "缺专业+缺学校 → 硬闸拦截，正确发出 INTAKE 清单",
     "counterexample_result": "虚构 CS/CMU 问题列表 → 2/2/2/2，🔴1 🟠3 🟡2，真独立占比 70%",
+    "field_feedback_result": "2026-09-04 真实使用暴露 5 处编撰 + 缺 ED/专业矩阵 + 缺改后预期分 → v1.2 引入七类出处标签 + 五种编撰模式自查 + 矩阵化 + 外教版。证据：reports/field-feedback-2026-09-04.md",
     "evidence": "reports/validation-run-2026-08-28.md"
   },
   "distribution": "private",
-  "distribution_notes": "references/gold-6-yale-jason/ 下含比邻内部教学资产与学生材料，仓库保持私有，不要外传。",
+  "distribution_notes": "references/gold-6-yale-jason/ 下含比邻内部教学资产与学生材料，仓库保持私有，不要外传。reports/field-feedback-2026-09-04.md 含脱敏后的真实失败案例，同样不外传。",
   "version_note": "manifest 用三段式版本号（schema 要求）；SKILL.md frontmatter 用二段式（比邻仓库既有约定）。两者同步递增。",
   "known_limitations": [
     "仅评估已成型的活动列表，不做从零规划",
-    "学校匹配度依赖公开资料质量，小众学校或政策变动可能查不全",
-    "真实性只做文档层面的可核查性判断，不做背景调查"
+    "学校匹配度依赖公开资料质量，小众学校或政策变动可能查不全；官网常挂过期信息，时效判定只能识别『页面自身是否标注年份』，无法穷尽所有过期内容",
+    "真实性只做文档层面的可核查性判断，不做背景调查；材料查不到的事实标 [缺] 进待补清单，不下造假结论"
   ],
   "scoring_basis": {
     "scale": "0-6",
@@ -83,7 +88,7 @@
     },
     {
       "q": "是否需要「轻量模式」（只做终稿质检）",
-      "decision": "v1.0 不加",
+      "decision": "v1.0 不加；v1.2 以「外教英文 clean version」部分承接了轻量诉求",
       "date": "2026-08-31",
       "rationale": "不为想象的需求加结构。先让顾问用起来，若真实使用中出现「只想要质检」的高频场景，再据实加入。"
     },
@@ -92,11 +97,35 @@
       "decision": "活动条目事实一致性（名称/时间/数字/年级 vs CA 表单与文书）归 bilin-commonapp-review；本 skill 的 essay coherence 只评叙事与定位层面",
       "date": "2026-08-31",
       "rationale": "commonapp-review 的 peer review 指出两 skill description 触发词重叠会路由抖动，双向加排除句。"
+    },
+    {
+      "q": "评估报告里编撰了材料中没有的内容怎么办",
+      "decision": "引入七类出处标签 + 五种编撰模式自查 + {{占位符}} 纪律；材料查不到的标 [缺] 进待补清单，不许写推断事实",
+      "date": "2026-09-04",
+      "rationale": "真实使用中出现 5 处编撰（头衔升级/跨条移植/术语加料/空白填充/年限拉长），其中 2 处若照抄进 CA 会被招生官一追问就穿。根源是改写文案时会「顺手补全更好看的细节」。"
+    },
+    {
+      "q": "ED 校和 Major 都有多个候选怎么办",
+      "decision": "输出（ED 候选 × 专业候选）矩阵，逐格给学校匹配分 + 依据卡，再收敛到推荐锚定组合 + 排序差异",
+      "date": "2026-09-04",
+      "rationale": "同一份简历投两家公司的两个岗位，结论必然不同。真实使用中顾问被迫追一句「ED 选项和专业选项没有」。"
+    },
+    {
+      "q": "是否给「改后预期分」",
+      "decision": "给。每维给现状→改后预期两个数，但预期分只能由本报告已写出的建议支撑，涨幅 ≥3 分视为高估回炉",
+      "date": "2026-09-04",
+      "rationale": "顾问要回答家长「照你说的改能到什么程度」。同时防止预期分变成安慰工具——文案改写改不出新事实。"
+    },
+    {
+      "q": "外教需要什么样的交付",
+      "decision": "独立英文 clean version，只含分专业排序 + 按重要性分级的修改建议，≤1 页，无分数无颜色无 URL，占位符原样保留并防外教自己填",
+      "date": "2026-09-04",
+      "rationale": "顾问原话「减少外教的阅读工作量」。翻译整份中文报告等于没减负，投影式交付才是减负。"
     }
   ],
   "next_candidates": [
-    "轻量模式（终稿质检）—— 待真实使用数据证明有需求",
+    "轻量模式（仅外教版，不做中文全量报告）—— 观察外教版使用频率后决定",
     "多顾问交叉验证打分稳定性（当前阈值未经多人校准）",
-    "真实学生案例跑通后回看 output-risk-profile 的 10 条风险是否命中"
+    "真实学生案例跑通后回看 output-risk-profile 的 10 条风险是否命中（v1.2 已命中 2 条：编撰、矩阵缺失，待回看其余）"
   ]
 }

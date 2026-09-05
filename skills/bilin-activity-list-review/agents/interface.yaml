@@ -1,20 +1,24 @@
 interface:
   display_name: 比邻留学 · 美本活动列表评估
-  short_description: 审核美本申请活动列表，产出 4 维 0-6 评分、三层匹配诊断、三级 red mark、排序与逐条修改建议。
+  short_description: 审核美本申请活动列表，产出中文 8 节报告 + 外教英文 clean version（分专业排序 + 分级修改建议）。全流程出处对账防幻觉。
   default_prompt: 帮我评估这个学生的活动列表。申请专业 {{major}}，目标校 {{schools}}。
   inputs:
     required: [major, target_schools, activity_list(title,description,position,time)]
-    optional: [personal_statement, supplemental_essays, recommendations]
+    optional: [personal_statement, supplemental_essays, recommendations, portfolio, activity_info_sheet, transcripts]
   outputs:
-    report: 7 节固定结构
-    scores: 0-6 × 4 维 overall/major_fit/school_fit/essay_coherence
+    report: 中文 8 节固定结构（§0 更正撤回 / §1 概览含改前后分 / §2 主题 / §3 三大匹配 / §4 ED×专业矩阵 / §5 red mark / §6 排序 / §7 逐条修改 / §8 综合判断）
+    clean_version: 外教英文版（分专业排序 + Must/Should/Polish 分级修改建议，≤1 页）
+    scores: 0-6 × 4 维 overall/major_fit/school_fit/essay_coherence，每维现状→改后预期
+    evidence: 七类出处标签 [原文]/[材料]/[文书]/[官方 URL]/[检索]/[推导]/[缺]；学校依据卡（URL+检索日+时效）
     risks: 黄橙红三级 + 真独立活动占比
   gates:
     - 缺 major 或 target_schools 即停工并发 INTAKE.md
-    - school_fit 必须检索，查不到标待核实
-    - 分数必须配顾问式段落
+    - 无出处的事实不许写进报告；改写文案缺事实用 {{占位符}}，不编
+    - school_fit 必须逐（校×专业）检索，确留 URL+检索日+时效判定，查不到标待核实
+    - 多 ED/专业候选必须出矩阵并收敛到推荐锚定组合
+    - 每维给现状分与改后预期分
     - 必须计算真独立活动占比
-    - 事实性内容不得编造
+    - 出报告前跑五种编撰模式自查；同时交付中文报告 + 外教英文版
 
 compatibility:
   canonical_format: agent-skills

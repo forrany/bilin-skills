@@ -64,6 +64,18 @@
     {
       "text": "把活动列表的 title 和 description 都过一遍",
       "family": "field_rewrite"
+    },
+    {
+      "text": "帮我出一份给外教的 clean version，只要排序和修改建议",
+      "family": "clean_version"
+    },
+    {
+      "text": "这个学生的活动列表，我这两所学校都在犹豫，音乐和哲学也没定，帮我分别看看",
+      "family": "ed_major_matrix"
+    },
+    {
+      "text": "如果按你的建议改完，这个活动列表能从几分提到几分",
+      "family": "ed_major_matrix"
     }
   ],
   "should_not_trigger": [
