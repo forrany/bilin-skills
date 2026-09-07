@@ -12,11 +12,12 @@
 
 ## 硬性边界
 
-### 只放三样东西
+### 正文只放两样东西
 
-1. **一句话定位**（1–2 行）—— 外教需要知道在往哪个方向改
-2. **排序建议**（一张表，含各专业的位次）
-3. **修改建议**（按重要性三档，每条给 current / suggested）
+1. **排序建议**（一张表，含各专业的位次）
+2. **修改建议**（按重要性三档，每条给 current / suggested）
+
+标题、学生 / 日期 / 专业元数据，以及存在 `{{ }}` 时的占位符安全说明属于操作性脚手架，不算第三类内容。**不要再加定位段、评分摘要、策略背景或结论。**
 
 ### 明确不放（放了就不 clean）
 
@@ -26,6 +27,7 @@
 | red mark 三色体系、独立活动占比 | 内部风险分级语言，外教不需要学 |
 | 学校依据卡、URL、检索日期 | 出处是给顾问核查用的，外教不核查 |
 | ED 策略推理、矩阵四格分 | 定校是顾问的决定，不是外教的 |
+| 单独的 Positioning / 定位段 | 这是顾问判断，不是外教需要执行的排序或修改动作 |
 | 编撰自查记录（§0） | 内部质量记录 |
 | 任何中文正文 | 外教读不了；占位符里的中文说明是唯一例外（见下） |
 | 学生隐私/敏感叙事细节 | 只给要改的文本，不复述背景故事 |
@@ -58,8 +60,6 @@
 # Activity List — Revision Brief
 **Student:** {{name}}　**Date:** {{date}}　**Intended majors:** {{Major A}} / {{Major B}}
 
-Positioning: one or two sentences on what this list should say about the student.
-
 > **Note on `{{ }}`:** these are facts we do not have. Please ask the student —
 > do not fill them in yourself, and do not leave them in the final application.
 
@@ -87,6 +87,8 @@ Only #3 and #7 change place between the two majors; the other eight stay put.
 ### Polish
 #2 tense, #5 possessive, #8 capitalisation — see marked text below.
 ````
+
+没有任何 `{{ }}` 占位符时，删除 Note；不要保留一段与本次任务无关的说明。
 
 ### 每条修改建议的三行格式
 
@@ -132,6 +134,7 @@ Only #3 and #7 change place between the two majors; the other eight stay put.
 
 - [ ] 全文 ≤1 页，条目 ≤10
 - [ ] 无分数、无颜色分级、无 URL、无中文正文
+- [ ] 正文只有 Recommended order 与 Revisions；无 Positioning 或第三类内容
 - [ ] 每条有 Current（逐字原文）/ Suggested / Why（≤15 词）
 - [ ] 排序表含各专业位次 + 一句差异说明
 - [ ] 占位符原样保留，文首有 `Note on {{ }}` 说明

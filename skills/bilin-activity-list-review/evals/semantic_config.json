@@ -1,6 +1,6 @@
 {
   "optimizer_hints": {
-    "capability": "Review a US undergraduate applicant's Common App activity list against their major, target schools, and essays",
+    "capability": "Review a US undergraduate applicant's Common App activity list against their intended major, ED schools, and essays",
     "inputs": [
       "activity list",
       "Common App activities",
@@ -8,12 +8,16 @@
       "personal statement",
       "supplemental essays",
       "major",
+      "ED school",
+      "ED candidates",
       "target schools",
       "活动列表",
       "活动清单",
       "主文书",
       "补充文书",
       "申请专业",
+      "ED 学校",
+      "ED 候选",
       "目标校"
     ],
     "trigger_actions": [

@@ -8,6 +8,17 @@
 
 ### Changed
 
+- **`bilin-activity-list-review` v1.2 → v1.3**（严格 ED 硬闸 + 描述统一性 + 外教版收口）。修复 v1.2
+  将「目标校 / ED 校」标成必填、却又允许「ED 未定继续做共性评估」的自相矛盾：现在 Major、至少一个
+  ED 校/候选、完整活动列表是三个独立硬闸；只有 EA / RD / 一般目标校清单不能替代 ED，缺失时不评分、
+  不排序、不改写。`interface.yaml` 同步将 `ed_schools` 列为 required，`target_schools` 降为 optional。
+
+  `FIELD-CHECKLIST.md` 新增整表描述一致性终检，覆盖平行动词结构、时态逻辑、大小写、缩写、数字格式、
+  标点和术语稳定性；`REPORT-TEMPLATE.md` 要求给具体活动编号、原文和替换文本，不能只写「统一风格」。
+  `CLEAN-VERSION.md` 删除 Positioning 段，正文严格只保留分专业排序与 Must fix / Should fix / Polish
+  修改建议。新增 `evals/behavior_cases.json` 和 2026-09-07 回归记录，覆盖缺 ED 拦截、多候选矩阵、
+  整表一致性与外教版两节限制。
+
 - **`bilin-activity-list-review` v1.1 → v1.2**（首次真实使用失败后的防幻觉加固 + 双产物）。证据见
   `skills/bilin-activity-list-review/reports/field-feedback-2026-09-04.md`。真实学生案例（ED 候选 2 所、
   专业候选 Music + Philosophy）暴露四类问题，本版全部修复：

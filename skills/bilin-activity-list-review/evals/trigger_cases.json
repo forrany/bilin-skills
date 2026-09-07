@@ -76,6 +76,10 @@
     {
       "text": "如果按你的建议改完，这个活动列表能从几分提到几分",
       "family": "ed_major_matrix"
+    },
+    {
+      "text": "申请专业是 CS，RD 学校有几所但 ED 还没定，先帮我审活动列表",
+      "family": "review_activity_list_missing_ed_gate"
     }
   ],
   "should_not_trigger": [

@@ -1,0 +1,66 @@
+{
+  "version": "1.0",
+  "cases": [
+    {
+      "id": "B01",
+      "case": "Major, editable activity list, and RD schools are supplied, but no ED school or ED candidate is supplied",
+      "expected": [
+        "Stop before scoring, school research, ordering, or rewriting",
+        "Send the ED intake request and explain that RD or general target schools do not replace ED input"
+      ],
+      "forbidden": [
+        "Continue with an RD-pool or generic school-fit review",
+        "Produce partial scores or revision advice"
+      ]
+    },
+    {
+      "id": "B02",
+      "case": "One intended major, one ED school, and a complete editable activity list are supplied",
+      "expected": [
+        "Proceed with a single ED-by-major combination",
+        "Use the ED school for school fit and ordering"
+      ],
+      "forbidden": [
+        "Ask for an additional ED school",
+        "Create an unnecessary matrix"
+      ]
+    },
+    {
+      "id": "B03",
+      "case": "Two ED candidates and two intended-major candidates are supplied",
+      "expected": [
+        "Evaluate all four ED-by-major combinations with separate evidence cards",
+        "Recommend one anchor combination and state ordering differences"
+      ],
+      "forbidden": [
+        "Use one combination as a proxy for the others",
+        "Return a matrix without an anchor recommendation"
+      ]
+    },
+    {
+      "id": "B04",
+      "case": "Activity descriptions mix present and past tense, US and U.S., percent and %, and inconsistent capitalization",
+      "expected": [
+        "Run a list-wide consistency pass after field-by-field review",
+        "Name affected activity numbers and provide exact replacement text"
+      ],
+      "forbidden": [
+        "Say only that the style should be more consistent",
+        "Normalize wording in a way that changes unsupported facts"
+      ]
+    },
+    {
+      "id": "B05",
+      "case": "Generate the external-coach clean version from a completed Chinese report",
+      "expected": [
+        "Include Recommended order and Revisions as the only substantive sections",
+        "Use English Must fix, Should fix, and Polish priorities",
+        "Preserve unresolved Chinese placeholders and their safety note"
+      ],
+      "forbidden": [
+        "Add a positioning paragraph, scores, red-mark colors, URLs, or strategy analysis",
+        "Introduce any claim absent from the Chinese report"
+      ]
+    }
+  ]
+}

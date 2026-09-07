@@ -1,16 +1,16 @@
 {
   "name": "bilin-activity-list-review",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "owner": "比邻留学 · 顾问团队",
-  "updated_at": "2026-09-04",
-  "review_due": "2026-12-04",
+  "updated_at": "2026-09-07",
+  "review_due": "2026-12-07",
   "status": "active",
   "maturity_tier": "production",
-  "lifecycle_stage": "v1.2-evidence-discipline",
+  "lifecycle_stage": "v1.3-strict-ed-gate",
   "context_budget_tier": "production",
   "skill_archetype": "production",
   "org": "bilin-admissions",
-  "summary": "美本申请活动列表评估：4 维 0-6 评分（现状+改后预期）+ 三层匹配诊断 + 三级 red mark + ED×专业矩阵 + 排序与逐条修改建议 + 外教英文 clean version。全流程出处对账防幻觉。",
+  "summary": "美本申请活动列表评估：Major + 至少一个 ED 校/候选为输入硬闸；4 维 0-6 评分（现状+改后预期）+ 三层匹配诊断 + 三级 red mark + ED×专业矩阵 + 排序与逐条修改建议 + 外教英文 clean version。全流程出处对账防幻觉。",
   "review_cadence": "每季度一次，或客户反馈评分口径需调整时",
   "target_platforms": ["generic", "agent-skills-compatible"],
   "factory_components": [
@@ -29,19 +29,21 @@
     "references/gold-6-yale-jason/README.md",
     "agents/interface.yaml",
     "evals/trigger_cases.json",
+    "evals/behavior_cases.json",
     "reports/output-risk-profile.md",
     "reports/artifact-design-profile.md",
     "reports/validation-run-2026-08-28.md",
-    "reports/field-feedback-2026-09-04.md"
+    "reports/field-feedback-2026-09-04.md",
+    "reports/validation-run-2026-09-07.md"
   ],
   "validation": {
-    "date": "2026-08-28",
-    "method": "资深顾问角色独立干跑（事先不告知真实分数）+ 硬闸测试 + 低分反例测试",
+    "date": "2026-09-07",
+    "method": "既有顾问干跑证据 + v1.3 静态行为契约回归（ED 硬闸 / 接口字段 / 整表一致性 / clean version 两节限制）",
     "gold_case_result": "Jason/Yale 四维均打到量表顶端 6/6/6/6（注：与耶鲁 EC=6 数字相同属巧合，两者量表不同，不构成互相验证；有意义的是独立执行者能识别出顶端列表）",
-    "gate_test_result": "缺专业+缺学校 → 硬闸拦截，正确发出 INTAKE 清单",
+    "gate_test_result": "缺 ED（即使已给 Major、活动列表和 RD/目标校）→ 硬闸拦截；至少一个 ED 候选才可开工",
     "counterexample_result": "虚构 CS/CMU 问题列表 → 2/2/2/2，🔴1 🟠3 🟡2，真独立占比 70%",
     "field_feedback_result": "2026-09-04 真实使用暴露 5 处编撰 + 缺 ED/专业矩阵 + 缺改后预期分 → v1.2 引入七类出处标签 + 五种编撰模式自查 + 矩阵化 + 外教版。证据：reports/field-feedback-2026-09-04.md",
-    "evidence": "reports/validation-run-2026-08-28.md"
+    "evidence": "reports/validation-run-2026-08-28.md + reports/validation-run-2026-09-07.md"
   },
   "distribution": "private",
   "distribution_notes": "references/gold-6-yale-jason/ 下含比邻内部教学资产与学生材料，仓库保持私有，不要外传。reports/field-feedback-2026-09-04.md 含脱敏后的真实失败案例，同样不外传。",
@@ -121,6 +123,24 @@
       "decision": "独立英文 clean version，只含分专业排序 + 按重要性分级的修改建议，≤1 页，无分数无颜色无 URL，占位符原样保留并防外教自己填",
       "date": "2026-09-04",
       "rationale": "顾问原话「减少外教的阅读工作量」。翻译整份中文报告等于没减负，投影式交付才是减负。"
+    },
+    {
+      "q": "只有 Major、活动列表和 EA/RD/一般目标校，但没有 ED，能否先做共性评估",
+      "decision": "不能。至少一所 ED 校或 ED 候选是独立必填项；缺失即硬闸拦截，不评分、不排序、不改写",
+      "date": "2026-09-07",
+      "rationale": "本 skill 是申请初期的活动列表策略与简历修改工具，排序和取舍必须锚定 ED；一般目标校不能替代这一决策前提。"
+    },
+    {
+      "q": "描述统一性是逐条语法检查还是整表检查",
+      "decision": "两者都要。逐条审核后增加整表一致性终检，并给出活动编号、原文和替换文本",
+      "date": "2026-09-07",
+      "rationale": "单条语法正确仍可能在时态逻辑、大小写、缩写、数字格式、标点和术语上呈现多人拼接感。"
+    },
+    {
+      "q": "外教 clean version 是否保留 Positioning 段",
+      "decision": "不保留。正文只含分专业排序和按重要性分级的修改建议；仅允许标题、元数据和占位符安全说明作为操作性脚手架",
+      "date": "2026-09-07",
+      "rationale": "用户明确要求「只给出」排序与修改建议，Positioning 是第三类顾问判断，会增加外教阅读量。"
     }
   ],
   "next_candidates": [

@@ -1,10 +1,10 @@
 ---
 name: bilin-activity-list-review
-description: 审核美本申请的 Common App 活动列表：对照 intended major、target schools 与 essays 评估。Use when 审核/评估 活动列表、activity list、EC list、打分、排序、提修改建议、查专业匹配/学校匹配/主文书矛盾、查真实性与可核查性。产出中文 8 节报告 + 外教英文 clean version（分专业排序建议 + 按重要性分级的修改建议，必须英文、简洁）。每条结论必须有出处标签（[原文]/[材料]/[官方 URL]/[检索]/[推导]/[缺]）；改写作案凡材料没有的数字与头衔一律写 {{占位符}}，不替学生编。多 ED 候选或专业候选时输出学校×专业矩阵。给现状分与改后预期分。开工前必须有 major 与目标校。Does NOT plan activities, write essays, or select schools — route to bilin-admissions-consultant。活动条目事实一致性核对（名称/时间/数字/年级 vs CA 表单与文书）归 bilin-commonapp-review；本 skill 的 essay coherence 只评叙事与定位层面，活动逐条事实核对以 bilin-commonapp-review 为准。
+description: 审核美本申请的 Common App 活动列表：对照 intended major、ED schools 与 essays 评估。Use when 审核/评估 活动列表、activity list、EC list、打分、排序、提修改建议、查专业匹配/学校匹配/主文书矛盾、查真实性与可核查性。产出中文 8 节报告 + 外教英文 clean version（分专业排序建议 + 按重要性分级的修改建议，必须英文、简洁）。每条结论必须有出处标签（[原文]/[材料]/[文书]/[官方 URL]/[检索]/[推导]/[缺]）；改写作案凡材料没有的数字与头衔一律写 {{占位符}}，不替学生编。多 ED 候选或专业候选时输出学校×专业矩阵。给现状分与改后预期分。开工前必须有 major、至少一个 ED 校/候选与完整活动列表；EA/RD/一般目标校不能替代 ED 输入。Does NOT plan activities, write essays, or select schools — route to bilin-admissions-consultant。活动条目事实一致性核对（名称/时间/数字/年级 vs CA 表单与文书）归 bilin-commonapp-review；本 skill 的 essay coherence 只评叙事与定位层面，活动逐条事实核对以 bilin-commonapp-review 为准。
 license: Proprietary
 metadata:
   org: bilin-admissions
-  version: "1.2"
+  version: "1.3"
 ---
 
 # 比邻留学 · 活动列表评估
@@ -21,13 +21,17 @@ metadata:
 
 ## 输入门槛（硬闸）
 
-开工前必须拿到。**缺任一项就停下来发 [`references/INTAKE.md`](references/INTAKE.md) 清单，不要硬推**。
+开工前必须拿到以下三项。**缺任一项就停下来发 [`references/INTAKE.md`](references/INTAKE.md) 清单，不评分、不排序、不改写**。
 
 1. **申请 Major**（必填）—— 可多个候选，但**至少一个确定**；专业未定则硬闸拦截
-2. **目标校 / ED 校**（必填）—— 可多个候选；ED 未定可以开工，但学校匹配度只能给共性结论，报告显著位置标注
+2. **ED 校 / ED 候选**（必填）—— 可多个候选，但**至少一所明确**；只有 EA / RD / 一般目标校清单仍算缺 ED，不能开工
 3. **活动列表原文** —— 每条含 `title` / `description` / `position` / `time`
-4. **主文书 + 补充文书**（optional）—— 有则查一致性，无则标 `N/A`
-5. **其他材料**（强烈建议）—— 作品集、活动信息表、会议逐字稿、成绩单、推荐信。这是出处对账的地基，见 `EVIDENCE.md`
+
+支持材料不构成启动硬闸：
+
+4. **其他 EA / RD / 目标校清单**（optional）—— 只作背景，不替代 ED 输入
+5. **主文书 + 补充文书**（optional）—— 有则查一致性，无则标 `N/A`
+6. **其他材料**（强烈建议）—— 作品集、活动信息表、会议逐字稿、成绩单、推荐信。这是出处对账的地基，见 `EVIDENCE.md`
 
 ## 工作流
 
@@ -55,7 +59,7 @@ Common App 系统级约束（10 条上限、字符数）**不用管**，系统�
 
 ## 八条铁律
 
-1. **无专业、无学校 → 不开工。** 专业未定是硬闸；ED 未定可开工但标共性结论。
+1. **无专业或无 ED → 不开工。** Major 与至少一个 ED 校/候选都是硬闸；EA / RD / 一般目标校不能替代 ED。缺任一项就只发收件清单，不做部分评估。
 2. **无出处的事实不许写进报告。** 每条事实性陈述带标签（`EVIDENCE.md` 七类），指不出出处就删掉或改占位符。
 3. **改写作案不许替学生编内容。** 材料里没有的数字、机构、头衔、术语，一律 `{{占位符}}`。这五类编撰（头衔升级/跨条移植/术语加料/空白填充/年限拉长）是 P0 事故，出报告前逐条自查。
 4. **学校匹配度必须检索、留 URL、留检索日、判时效，不许脑补。** 查不到标"待核实"，过期页面降级或标"需二次确认"。
