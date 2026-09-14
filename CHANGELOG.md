@@ -6,6 +6,12 @@
 
 ## [Unreleased]
 
+### Added
+
+- 新增 `bilin-education` Plugin 独立发行链路，初始版本为 `1.2.0`。桌面客户端可通过私有内容服务检查、验证、安装和回滚整个 Plugin，无需随 Skill 更新重新发布客户端。
+- 新增严格运行时白名单、确定性 ZIP、逐 Skill 内容哈希和 Ed25519 原始字节签名/发布工具。
+- 发行包明确排除报告、评测、文档归档、隐藏文件和符号链接；`agents/interface.yaml` 通过显式运行时配置纳入需要它的 Skills。
+
 ### Changed
 
 - **`bilin-activity-list-review` v1.2 → v1.3**（严格 ED 硬闸 + 描述统一性 + 外教版收口）。修复 v1.2

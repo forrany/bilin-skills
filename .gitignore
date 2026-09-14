@@ -1,7 +1,9 @@
 .DS_Store
 _user_meta.json
 *.zip
+*.pem
 *.pyc
 node_modules/
+dist/
 .claude/
 .workbuddy/

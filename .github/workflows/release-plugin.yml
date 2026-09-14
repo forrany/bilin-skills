@@ -1,0 +1,49 @@
+name: Release bilin-education Plugin
+
+on:
+  push:
+    tags:
+      - "bilin-education-v*"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - name: Run test matrix
+        run: npm test
+      - name: Validate Plugin and Skills
+        run: npm run validate
+      - name: Build deterministic package
+        run: npm run package
+      - name: Sign release
+        env:
+          CONTENT_SIGNING_PRIVATE_KEY_PEM: ${{ secrets.CONTENT_SIGNING_PRIVATE_KEY_PEM }}
+        run: npm run sign
+      - name: Publish to content update service
+        env:
+          BILIN_CONTENT_UPDATE_URL: ${{ vars.BILIN_CONTENT_UPDATE_URL }}
+          BILIN_CONTENT_PUBLISH_TOKEN: ${{ secrets.BILIN_CONTENT_PUBLISH_TOKEN }}
+        run: npm run publish
+      - name: Archive release artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: bilin-education-release-${{ github.ref_name }}
+          path: |
+            dist/stable.json
+            dist/stable.json.sig
+            dist/*.zip
+            dist/*.zip.sig
+          if-no-files-found: error

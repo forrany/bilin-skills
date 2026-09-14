@@ -1,0 +1,23 @@
+{
+  "name": "bilin-education",
+  "version": "1.2.0",
+  "description": "比邻留学发行版的美本申请顾问、材料审核与公众号内容 Skills。",
+  "author": {
+    "name": "Bilin Admissions",
+    "url": "https://bilin-admissions.com"
+  },
+  "license": "Proprietary",
+  "distribution": "bilin",
+  "minAppVersion": "1.4.6",
+  "publishedAt": "2026-09-11T08:00:00Z",
+  "releaseNotes": "首个与桌面客户端解耦的比邻 Skills 发行版：支持客户端内检查、签名验证、安装与回滚。",
+  "skills": [
+    "bilin-activity-list-review",
+    "bilin-admissions-consultant",
+    "bilin-commonapp-review",
+    "bilin-wechat-essay-write",
+    "bilin-wechat-topic-brainstorm"
+  ],
+  "preset": true,
+  "removable": false
+}

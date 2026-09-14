@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "skills": {
+    "bilin-activity-list-review": {
+      "include": ["agents/interface.yaml"],
+      "executables": []
+    },
+    "bilin-commonapp-review": {
+      "include": ["agents/interface.yaml"],
+      "executables": []
+    }
+  }
+}

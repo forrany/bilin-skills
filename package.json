@@ -1,0 +1,22 @@
+{
+  "name": "bilin-education-skills",
+  "version": "1.2.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test release/test/release.test.mjs",
+    "validate": "node release/validate.mjs",
+    "package": "node release/package.mjs --output dist",
+    "sign": "node release/sign.mjs --output dist",
+    "publish": "node release/publish.mjs --output dist"
+  },
+  "dependencies": {
+    "yazl": "3.3.1"
+  },
+  "devDependencies": {
+    "yauzl": "3.2.0"
+  }
+}
