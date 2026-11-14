@@ -1,0 +1,14 @@
+{
+  "name": "bilin-skills",
+  "description": "比邻留学（Bilin Admissions）AI 顾问技能库",
+  "owner": {
+    "name": "Bilin Admissions"
+  },
+  "plugins": [
+    {
+      "name": "bilin-education",
+      "description": "比邻留学美本申请顾问、活动列表审核、Common App 审核与公众号写作 Skills",
+      "source": "./"
+    }
+  ]
+}
